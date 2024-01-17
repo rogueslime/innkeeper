@@ -1,24 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import CharacterCard from './components/CharacterCard';
 
 function App() {
+  const [characters, setCharacters] = useState([
+    {
+      id: 1,
+      name: 'Elrond',
+      class: 'Wizard',
+      race: 'Elf',
+      lvl: 5
+    },
+    {
+      id: 2,
+      name: 'Bobbert',
+      class: 'Fighter',
+      race: 'Halfling',
+      lvl: 3
+    }
+  ]);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <style>
+        {`
+          .character-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center; /* Center the items horizontally */
+            align-items: center; /* Center the items vertically (optional) */
+          }
+          .character-container > div { /* Assuming CharacterCard is a div */
+            margin: 10px; /* Add some space between cards */
+            outline-style: dotted;
+          }
+        `}
+      </style>
+
+      <div className="character-container">
+        {characters.map(character => (
+          <CharacterCard key={character.id} character={character} />
+        ))}
+      </div>
+    </>
   );
 }
 
