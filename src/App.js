@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import CharacterCard from './components/CharacterCard';
+import Toolbar from './components/Toolbar';
+import CharacterForm from './components/CharacterForm';
 
 function App() {
   const [characters, setCharacters] = useState([
@@ -19,6 +21,10 @@ function App() {
     }
   ]);
 
+  const addCharacter = (character) => {
+    setCharacters([...characters, { ...character, id:characters.length + 1}]);
+  };
+
 
   return (
     <>
@@ -34,13 +40,20 @@ function App() {
             margin: 10px; /* Add some space between cards */
             outline-style: dotted;
           }
+          .site-container {
+            justify-content: center;
+            align-items: center;
+          }
         `}
       </style>
-
-      <div className="character-container">
-        {characters.map(character => (
-          <CharacterCard key={character.id} character={character} />
-        ))}
+      
+      <div className = "site-container">
+        <CharacterForm addCharacter = {addCharacter} />
+        <div className="character-container">
+          {characters.map(character => (
+            <CharacterCard key={character.id} character={character} />
+          ))}
+        </div>
       </div>
     </>
   );
