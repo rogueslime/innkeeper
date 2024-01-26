@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import InnView from './components/InnView';
 import Sidebar from './components/Sidebar';
 import HomePage from './components/HomePage';
-import './components/App.css';
+import './components/style/App.css';
 
 function App() {
     return (
