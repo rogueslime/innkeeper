@@ -12,10 +12,37 @@ function CharacterForm({ addCharacter }) {
         setNewCharacter({ ...newCharacter, [e.target.name]: e.target.value});
     };
 
-    const handleSubmit = (e) => {
+    //const handleSubmit = (e) => {
+    //    e.preventDefault();
+    //    addCharacter(newCharacter);
+    //    setNewCharacter({name: '', lvl: '', class: '', race: ''});
+    //};
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        addCharacter(newCharacter);
-        setNewCharacter({name: '', lvl: '', class: '', race: ''});
+    
+        try {
+            const response = await fetch('http://localhost:5000/api/characters', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(newCharacter),
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            const result = await response.json();
+            console.log('Success:', result);
+    
+            // Optionally, clear the form here if submission was successful
+            setNewCharacter({name: '', lvl: '', class: '', race: ''});
+        } catch (error) {
+            console.error('Error:', error);
+        }
     };
 
     return (

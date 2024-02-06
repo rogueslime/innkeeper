@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function HomePage() {
-    return (
-        <div>Welcome home! Innkeeper is currently in-dev. Thanks for checking out my passion project!
-        </div>
-    )
-}
+    const [message, setMessage] = useState('');
 
+    useEffect(() => {
+        fetch('/api')
+            .then(response => response.text()) // Getting the text response
+            .then(data => {
+                setMessage(data);
+            })
+            .catch(error => console.error('There was an error!', error));
+    }, []);
+
+    return (
+        <div>
+            {message}
+        </div>
+    );
+}
 export default HomePage;

@@ -1,0 +1,65 @@
+{
+    "name": "Aragorn",
+    "race": "Human",
+    "class": "Ranger",
+    "lvl": 20,
+    "HP_max": 150,
+    "ascores": [
+      {
+        "title": "Strength",
+        "score": 18
+      },
+      {
+        "title": "Dexterity",
+        "score": 17
+      },
+      {
+        "title": "Constitution",
+        "score": 14
+      },
+      {
+        "title": "Intelligence",
+        "score": 13
+      },
+      {
+        "title": "Wisdom",
+        "score": 15
+      },
+      {
+        "title": "Charisma",
+        "score": 16
+      }
+    ],
+    "features": [
+      {
+        "title": "Bravery",
+        "body": "Immune to fear."
+      },
+      {
+        "title": "Darkvision",
+        "body": "Can see in the dark up to 60 feet."
+      }
+    ],
+    "spells": [
+      {
+        "title": "Hunter's Mark",
+        "level": 1,
+        "body": "Mystically mark a target as your quarry to deal extra damage."
+      }
+    ],
+    "backpack": [
+      {
+        "title": "Healing Potion",
+        "weight": 0.5,
+        "worth": "50 gold",
+        "body": "Heals 2d4 + 2 hit points."
+      },
+      {
+        "title": "Longsword",
+        "weight": 3,
+        "worth": "15 gold",
+        "body": "Versatile weapon that can deal 1d8 (1d10 if used with both hands) slashing damage."
+      }
+    ],
+    "lorewriteup": "Aragorn is the heir to the throne of Gondor. Though he was raised by Elves in secrecy, he is a man destined to greatness, known to the Elves as Estel, meaning 'Hope'."
+  }

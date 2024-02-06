@@ -37,4 +37,8 @@ const CharacterSchema = new mongoose.Schema({
     lorewriteup: String /* allows users to tell their characters story longform */
 });
 
-module.exports = mongoose.model("Characters",characterSchema);
+// Convert schema into a model
+const Character = mongoose.model('Character', CharacterSchema);
+
+// Export the model
+module.exports = Character;
