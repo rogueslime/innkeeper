@@ -2,7 +2,7 @@ const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const PORT = process.env.PORT || 5000; // wat dis do
+const PORT = process.env.PORT || 4000; // wat dis do
 
 app.use(cors()); // set up to only use my origin eventually
 

@@ -22,9 +22,10 @@ function InnView() {
 
     // Fetches characters from database. Database must be online; currently not hooked into server.js
     useEffect(() => {
-        fetch('/api/characters')
+        fetch('http://localhost:4000/api/characters')
             .then(response => response.json())
             .then(data => setCharacters(data))
+            .then(data => console.log(data))
             .catch(error => console.error('Error fetching characters: ', error));
     }, []);
 

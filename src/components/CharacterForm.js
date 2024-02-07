@@ -23,7 +23,7 @@ function CharacterForm({ addCharacter }) {
         e.preventDefault();
     
         try {
-            const response = await fetch('http://localhost:5000/api/characters', {
+            const response = await fetch('http://localhost:4000/api/characters', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

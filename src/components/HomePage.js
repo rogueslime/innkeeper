@@ -4,7 +4,7 @@ function HomePage() {
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-        fetch('/api')
+        fetch('http://localhost:4000/api')
             .then(response => response.text()) // Getting the text response
             .then(data => {
                 setMessage(data);
