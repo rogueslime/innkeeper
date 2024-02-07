@@ -4,6 +4,7 @@ import InnView from './components/InnView';
 import Sidebar from './components/Sidebar';
 import HomePage from './components/HomePage';
 import './components/style/App.css';
+import logo from './images/Innkeeper-logo.png';
 
 function App() {
     return (
@@ -11,6 +12,7 @@ function App() {
             <div className="app-container">
                 <Sidebar />
                 <div className="main-content">
+                    <img src={logo} alt="Logo"/>
                     <Routes>
                         <Route path="/home" element={<HomePage />} />
                         <Route path="/my-inn" element={<InnView />} />
@@ -18,7 +20,7 @@ function App() {
                 </div>
             </div>
         </Router>
-    )
+        )
 }
 
 export default App;

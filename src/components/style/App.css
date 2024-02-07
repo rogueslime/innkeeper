@@ -20,5 +20,11 @@
 }
 
 .main-content {
-    margin-left: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justfiy-content: center;
+    margin-left:300px;
+    width: calc(100%-300px);
+    min-height:100vh;
 }
