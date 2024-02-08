@@ -3,7 +3,7 @@
     border-radius: 8px;
     padding: 20px;
     margin: 10px;
-    width: 300px; /* Fixed width */
+    width: 150px; /* Fixed width */
     height: auto; /* Automatic height, but you can set a fixed height if preferred */
     background-color: #f9f9f9;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
