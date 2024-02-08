@@ -2,6 +2,7 @@ import React from 'react';
 import './style/CharacterCard.css';
 
 function CharacterCard({ character, onExpand, onDelete }) { // Add the passed method onExpand as an arg to func
+    
     return (
         <>
             <div className = 'character-card'>

@@ -10,11 +10,18 @@ function InnView() {
     const [totalPages, setTotalPages] = useState(0);
 
     const [expandedCharacter, setExpandedCharacter] = useState(null);
+    
+    // Unexpand the fanned out character menu.
+    const handleUnexpandCharacter = () => {
+        setExpandedCharacter(null);
+    };
 
+    // Fans out the desired character.
     const handleExpandCharacter = (character) => {
         setExpandedCharacter(character);
     }
 
+    // Deletes a character, including a confirmation window.
     const handleDeleteCharacter = (characterId) => {
         const isConfirmed = window.confirm('Are you sure you want to delete this character?');
         console.log(characterId);
@@ -38,7 +45,7 @@ function InnView() {
                 console.error('Error deleting character:', error);
             });
         }
-    }
+    };
 
     // Fetches characters from database. Database must be online; currently not hooked into server.js
     useEffect(() => {
@@ -52,14 +59,17 @@ function InnView() {
             .catch(error => console.error('Error fetching characters: ', error));
     }, [currentPage]);
 
+    // Adds a character based on the input.
     const addCharacter = (character) => {
         setCharacters([...characters, { ...character, id: characters.length + 1 }]);
     };
 
+    // Next page.
     const handleNext = () => {
         setCurrentPage(currentPage => currentPage + 1);
     };
 
+    // Previous page.
     const handlePrevious = () => {
         setCurrentPage(currentPage => Math.max(1, currentPage - 1)); // prevents going below 1.
     };
@@ -76,9 +86,11 @@ function InnView() {
                     onDelete={handleDeleteCharacter}/> // Passing method as onDelete
                 ))}
             </div>
-            <button onClick={handlePrevious} disabled={currentPage === 1}>Previous</button>
-            <button onClick={handleNext} disabled={currentPage === totalPages}>Next</button>
-            <div className = 'expanded'>{expandedCharacter && <CharacterDetails character = {expandedCharacter} />}</div>
+            <div className = 'navButtons'>
+                <button name = 'nav' onClick={handlePrevious} disabled={currentPage === 1}>Previous</button>
+                <button name = 'nav' onClick={handleNext} disabled={currentPage === totalPages}>Next</button>
+            </div>
+            {expandedCharacter && <CharacterDetails character = {expandedCharacter} onUnexpand = {handleUnexpandCharacter} />}
         </>
     );
 }

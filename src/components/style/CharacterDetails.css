@@ -1,0 +1,59 @@
+.expanded {
+    border: 1px solid #fff;
+    border-radius: 8px;
+    max-width: 790px; /* Use max-width for responsiveness */
+    padding: 20px;
+    margin: 10px auto; /* Center align the expanded section */
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column; /* Stack sections vertically */
+    align-items: center;
+}
+
+
+.expanded h3 {
+    color: #333; /* More emphasis on section titles */
+    margin-bottom: 5px;
+}
+
+.expanded ul {
+    display: flex;
+    flex-wrap: wrap; /* Wrap items to the next line if space runs out */
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px; /* Space between sections */
+    padding: 10px;
+    list-style-type: none; /* Remove bullet points for a cleaner look */
+}
+
+.expanded p {
+    text-align: center;
+}
+
+.expanded ul li {
+    margin-right: 15px; /* Space between items */
+    margin-bottom: 10px; /* Space between rows when wrapped */
+}
+
+.ascores li {
+    border: 1px solid;
+    padding: 5px;
+}
+
+.feats li {
+    border: 1px solid;
+    padding: 5px;
+    max-width: 200px;
+}
+
+.spells li {
+    border: 1px solid;
+    padding: 5px;
+    max-width: 200px;
+}
+
+.backpack li {
+    border: 1px solid;
+    padding: 5px;
+    max-width: 200px;
+}
