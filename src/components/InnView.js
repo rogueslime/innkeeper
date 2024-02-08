@@ -15,6 +15,31 @@ function InnView() {
         setExpandedCharacter(character);
     }
 
+    const handleDeleteCharacter = (characterId) => {
+        const isConfirmed = window.confirm('Are you sure you want to delete this character?');
+        console.log(characterId);
+
+        if (isConfirmed) {
+            fetch(`http://localhost:4000/api/characters/${characterId}`, {
+                method: 'DELETE',
+            })
+            .then(response =>{
+                if(!response.ok) {
+                    throw new Error('failed to delete character.',characterId);
+                }
+                return response.json();
+            })
+            .then(() => {
+                // Update state to remove the character from the UI. However, Character currently remains in UI after deletion until a
+                // different state update occurs.
+                setCharacters(characters => characters.filter(character => character.id !== characterId));
+            })
+            .catch(error => {
+                console.error('Error deleting character:', error);
+            });
+        }
+    }
+
     // Fetches characters from database. Database must be online; currently not hooked into server.js
     useEffect(() => {
         fetch(`http://localhost:4000/api/characters?page=${currentPage}&limit=4`)
@@ -47,7 +72,8 @@ function InnView() {
                 {characters.map(character => (
                     <CharacterCard key={character.id} 
                     character={character} 
-                    onExpand={handleExpandCharacter}/> // Passing method as onExpand
+                    onExpand={handleExpandCharacter} // Passing method as onExpand
+                    onDelete={handleDeleteCharacter}/> // Passing method as onDelete
                 ))}
             </div>
             <button onClick={handlePrevious} disabled={currentPage === 1}>Previous</button>

@@ -1,7 +1,7 @@
 import React from 'react';
 import './style/CharacterCard.css';
 
-function CharacterCard({ character, onExpand }) { // Add the passed method onExpand as an arg to func
+function CharacterCard({ character, onExpand, onDelete }) { // Add the passed method onExpand as an arg to func
     return (
         <>
             <div className = 'character-card'>
@@ -9,6 +9,7 @@ function CharacterCard({ character, onExpand }) { // Add the passed method onExp
                 <p>Class: {character.class}</p>
                 <p>Race : {character.race}</p>
                 <button onClick={() => onExpand(character)}>Expand</button>
+                <button onClick={() => onDelete(character._id)}>Delete</button>
             </div>
         </>
     );
