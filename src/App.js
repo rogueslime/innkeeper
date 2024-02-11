@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import InnView from './components/InnView';
 import Sidebar from './components/Sidebar';
 import HomePage from './components/HomePage';
+import Register from './components/Registration';
 import './components/style/App.css';
 import logo from './images/Innkeeper-logo.png';
 
@@ -16,6 +17,7 @@ function App() {
                     <Routes>
                         <Route path="/home" element={<HomePage />} />
                         <Route path="/my-inn" element={<InnView />} />
+                        <Route path="/register" element={<Register />} />
                     </Routes>
                 </div>
             </div>

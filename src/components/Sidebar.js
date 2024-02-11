@@ -6,6 +6,7 @@ function Sidebar() {
         <div className="sidebar">
             <Link to="/home">Home</Link>
             <Link to="/my-inn">My Inn</Link>
+            <Link to="/register">Register</Link>
         </div>
     )
 }
