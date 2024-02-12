@@ -2,13 +2,35 @@ body {
     background-color: #cccccc; /* Light gray color */
 }
 
+.header {
+    display: flex;
+    flex-direction: row;
+    margin-left:10%;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.header-text {
+    position: absolute;
+    left: 75%;
+}
+
+.header-logo {
+    align-items: center;
+    margin: 0 auto;
+    flex-grow: 0;
+}
+
 .app-container {
     display: flex;
+    flex-direction: column;
 }
 
 .sidebar {
     position: fixed;
-    width: 200px;
+    width: 10%;
     height: 100%;
     background-color: #333;
     padding: 20px;
@@ -27,7 +49,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left:300px;
-    width: calc(100%-300px);
+    margin-left:10%;
+    width: 90%;
     min-height:100vh;
 }

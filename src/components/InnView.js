@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../context/AuthContext';
 import CharacterCard from './CharacterCard';
 import CharacterForm from './CharacterForm';
 import CharacterDetails from './CharacterDetails'
 import './style/InnView.css'
 
 function InnView() {
+    const { currentUser } = useAuth();
+
     const [characters, setCharacters] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -39,7 +42,7 @@ function InnView() {
             .then(() => {
                 // Update state to remove the character from the UI. However, Character currently remains in UI after deletion until a
                 // different state update occurs.
-                setCharacters(characters => characters.filter(character => character.id !== characterId));
+                setCharacters(characters => characters.filter(character => character._id !== characterId));
             })
             .catch(error => {
                 console.error('Error deleting character:', error);
@@ -61,7 +64,7 @@ function InnView() {
 
     // Adds a character based on the input.
     const addCharacter = (character) => {
-        setCharacters([...characters, { ...character, id: characters.length + 1 }]);
+        setCharacters(prevCharacters => [...prevCharacters, { ...character, id: characters.length + 1 }]);
     };
 
     // Next page.
@@ -77,7 +80,11 @@ function InnView() {
 
     return (
         <>
-            <CharacterForm addCharacter={addCharacter} />
+            { currentUser ? (
+                <CharacterForm addCharacter={addCharacter} />
+            ) : (
+                <></>
+            )}
             <div className="innview">
                 {characters.map(character => (
                     <CharacterCard key={character.id} 

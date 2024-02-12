@@ -1,8 +1,11 @@
 import React from 'react';
 import './style/CharacterCard.css';
+import {useAuth} from '../context/AuthContext';
 
 function CharacterCard({ character, onExpand, onDelete }) { // Add the passed method onExpand as an arg to func
-    
+    const { currentUser } = useAuth();
+    const canDelete = currentUser && currentUser.characterList && currentUser.characterList.includes(character._id);
+
     return (
         <>
             <div className = 'character-card'>
@@ -10,7 +13,7 @@ function CharacterCard({ character, onExpand, onDelete }) { // Add the passed me
                 <p>Class: {character.class}</p>
                 <p>Race : {character.race}</p>
                 <button onClick={() => onExpand(character)}>Expand</button>
-                <button onClick={() => onDelete(character._id)}>Delete</button>
+                {canDelete && <button onClick={() => onDelete(character._id)}>Delete</button>}
             </div>
         </>
     );
