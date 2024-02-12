@@ -1,0 +1,42 @@
+.fullform {
+    padding:5px;
+    width:70%;
+    border: 1px solid #222;
+    background-color: #333;
+    box-shadow: 0 2px 4px rgba(0,0,0,1);
+}
+
+.fullform form{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+}
+
+.fullform input {
+    margin-bottom: 10px;
+}
+
+.fullform p {
+    color: #ccc;
+    margin-right: 10px;
+}
+
+.ascoreform form{
+    display:flex;
+    flex-direction:row;
+}
+
+.featform form{
+    display:flex;
+    flex-direction:row;
+}
+
+.spellform form {
+    display:flex;
+    flex-direction:row;
+}
+
+.itemform form {
+    display: flex;
+    flex-direction: row;
+}
