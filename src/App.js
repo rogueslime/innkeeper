@@ -34,10 +34,10 @@ function App() {
                         { currentUser ? (
                         <>
                         <p>Hello, {currentUser.username}.</p>
-                        <Link onClick = {logout} class='header-sign' to="/home">Sign out.</Link>
+                        <Link onClick = {logout} class='header-sign' to="/home">Sign Out.</Link>
                         </>
                         ) : (
-                        <Link class='header-sign' to="/login">Sign in.</Link>
+                        <Link class='header-sign' to="/login">Sign In</Link>
                         )}
                     </div>
                     <div className ="header-logo">
