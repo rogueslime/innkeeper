@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 function HomePage() {
-    const [message, setMessage] = useState('');
-
-    useEffect(() => {
-        fetch('http://localhost:4000/api')
-            .then(response => response.text()) // Getting the text response
-            .then(data => {
-                setMessage(data);
-            })
-            .catch(error => console.error('There was an error!', error));
-    }, []);
-
     return (
         <div>
-            {message}
+            Innkeeper is a DnD app for tracking and sharing your characters' stories.
+
+Where some TTRPG character managers aim to replace your handy notebook, Innkeeper aims to supplement it. Instead of providing a digital notebook for you to wholly track your character, Innkeeper provides you a "social network" in which you can share your favorite characters and their backstories with others.
         </div>
     );
 }
