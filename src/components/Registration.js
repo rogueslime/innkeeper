@@ -1,11 +1,17 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Register() {
+    // States
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
+    // State to manage form submission
+    const [formSubmitted, setFormSubmitted] = useState(false);
+
     const handleSubmit = async(e) => {
         e.preventDefault();
+        // Try registration
         try {
             const response = await fetch('http://localhost:4000/api/auth/register', {
                 method: 'POST',
@@ -16,12 +22,22 @@ function Register() {
             });
             const data = await response.json();
             console.log(data);
-            // Handle success (navigate to Home)
+            console.log(`switching to ${!formSubmitted}`);
+            setFormSubmitted(formSubmitted => !formSubmitted);
         } catch(error) {
             console.error('Registration failed:', error);
         }
     }
 
+    // If form is submitted
+    if (formSubmitted) {
+        return (
+            <p>Form submitted! <Link to='/login'>LOGIN</Link> now!</p>
+        );
+        
+    }
+    
+    // Else
     return (
         <form onSubmit = {handleSubmit}>
             <input
@@ -38,6 +54,7 @@ function Register() {
             />
             <button type="submit">Register</button>
         </form>
-    )};
+    );
+}
 
 export default Register;

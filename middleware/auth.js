@@ -3,13 +3,18 @@ const User = require('../models/user');
 
 const auth = async (req, res, next) => {
     try {
+        // Extracts token from header
         const token = req.header('Authorization').replace('Bearer ','');
+
+        // Validates if there's a token
         if (!token) {
             console.log('tokenless fellow');
             return res.status(401).send({ error: 'No token.'});
         }
+
+        // Decode & verify token by comparing to UserIDs (decoded token is _id)
         console.log('Token: ', token);
-        const decoded = jwt.verify(token, 'secretKey');
+        const decoded = jwt.verify(token, 'secretKey'); // Need new secretKey for prod
         console.log('Token deocoded: ',decoded);
         const user = await User.findOne({ _id: decoded._id });
 

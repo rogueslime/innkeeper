@@ -21,7 +21,7 @@
     display: flex;
     flex-wrap: wrap; /* Wrap items to the next line if space runs out */
     border-bottom: 1px solid #eee;
-    margin-bottom: 20px; /* Space between sections */
+    margin-bottom: 5px; /* Space between sections */
     padding: 10px;
     list-style-type: none; /* Remove bullet points for a cleaner look */
 }
@@ -32,7 +32,7 @@
 
 .expanded ul li {
     margin-right: 15px; /* Space between items */
-    margin-bottom: 10px; /* Space between rows when wrapped */
+    margin-bottom: 3px; /* Space between rows when wrapped */
 }
 
 .ascores li {

@@ -2,19 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {useAuth} from '../context/AuthContext';
 
-function Sidebar() {
-    const {currentUser, logout} = useAuth();
+function Sidebar({isOpen}) {
+    const {currentUser} = useAuth();
     
     return (
-        <div className="sidebar">
-            <Link to="/home">Home</Link>
-            <Link to="/my-inn">My Inn</Link>
-            <Link to="/register">Register</Link>
-            { currentUser ? (
-                <p onClick={logout}>Logout</p>
-            ) : (
-                <Link to="/login">Login</Link>
-            )}
+        <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+            <div className="content">
+                <Link to="/home">Home</Link>
+                <Link to="/public-inn">Public Inn</Link>
+                {currentUser ? (<></>) : ( <Link to="/register">Register</Link> )}
+            </div>
         </div>
     )
 }

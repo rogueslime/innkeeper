@@ -80,11 +80,16 @@ function InnView() {
 
     return (
         <>
+        
+            {/*If currentUser, allow access to Add Character form*/}
             { currentUser ? (
                 <CharacterForm addCharacter={addCharacter} />
             ) : (
                 <></>
             )}
+
+            
+            {/*Innview block*/}
             <div className="innview">
                 {characters.map(character => (
                     <CharacterCard key={character.id} 
@@ -93,10 +98,16 @@ function InnView() {
                     onDelete={handleDeleteCharacter}/> // Passing method as onDelete
                 ))}
             </div>
+
+        
+            {/*Nav Buttons*/}
             <div className = 'navButtons'>
                 <button name = 'nav' onClick={handlePrevious} disabled={currentPage === 1}>Previous</button>
                 <button name = 'nav' onClick={handleNext} disabled={currentPage === totalPages}>Next</button>
             </div>
+
+            
+            {/*ExpandedCharacter block*/}
             {expandedCharacter && <CharacterDetails character = {expandedCharacter} onUnexpand = {handleUnexpandCharacter} />}
         </>
     );

@@ -5,16 +5,32 @@ body {
 .header {
     display: flex;
     flex-direction: row;
+    width: 80%;
     margin-left:10%;
-    width: 90%;
     justify-content: center;
     align-items: center;
     position: relative;
 }
 
+.header-sign {
+    color: darkorange;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.header-sign:hover {
+    color: lightsalmon;
+    text-decoration: none;
+}
+
 .header-text {
     position: absolute;
     left: 75%;
+}
+
+.header-button {
+    position: absolute;
+    right: 75%;
 }
 
 .header-logo {
@@ -33,9 +49,22 @@ body {
     width: 10%;
     height: 100%;
     background-color: #333;
-    padding: 20px;
-    left: 0;
+    left: -10%;
     top: 0;
+    bottom: 0;
+    transition: left 0.3s ease;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.content {
+    transition: margin-left 0.3 ease;
+}
+
+.content.shift {
+    margin-left: 250px;
 }
 
 .sidebar p {
@@ -53,7 +82,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left:15%;
-    width: 85%;
+    width: 100%;
     min-height:100vh;
 }
