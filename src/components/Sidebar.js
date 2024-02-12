@@ -11,7 +11,7 @@ function Sidebar() {
             <Link to="/my-inn">My Inn</Link>
             <Link to="/register">Register</Link>
             { currentUser ? (
-                <button onClick={logout}>Logout</button>
+                <p onClick={logout}>Logout</p>
             ) : (
                 <Link to="/login">Login</Link>
             )}

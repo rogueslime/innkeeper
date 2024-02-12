@@ -38,6 +38,10 @@ body {
     top: 0;
 }
 
+.sidebar p {
+    color: #FFF;
+}
+
 .sidebar a {
     color: white;
     display: block;
