@@ -13,11 +13,22 @@
     box-shadow: -2px 0 5px rgba(0,0,0,0.5);
     transform: translateX(120%);
     transition: transform 0.3s ease;
+    align-items:flex-start;
+}
+
+.input-container h2 {
+    color: darkorange;
 }
 
 .input-container.open {
     transform: translateX(0);
-  }
+}
+
+.character-form {
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+}
 
 .character-form input {
     margin-bottom: 10px;
@@ -28,16 +39,45 @@
     margin-right: 10px;
 }
 
+#add-btn {
+    width:50px;
+}
+
+.subform input {
+    width:50px;
+}
+
 .form-row {
     display: flex;
     flex-direction:row;
 }
 
-.form-row span {
+#fr-1 input {
+    width:50px;
+}
+
+#fr-1 span {
     margin-left:10px;
 }
 
-.ascore, .feat, .spell, .item{
-    display: flex;
-    flex-direction: column;
+.labelPair {
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.labelPair label {
+    color:#ccc;
+}
+
+.ascore, .feat, .spell, .item {
+    background-color:darkorange;
+    padding:2px;
+}
+.ascore, .feat, .spell, .item p {
+    color:#ccc;
+}
+
+.form-row span {
+    margin-left:5px;
 }

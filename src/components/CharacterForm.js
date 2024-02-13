@@ -144,199 +144,305 @@ function CharacterForm({ addCharacter, isOpen }) {
     return (
         <div className={`input-container ${isOpen ? 'open' : ''}`}>
             <form className="character-form" onSubmit={handleSubmit}>
-            <input
-                type="text"
-                className="name-input"
-                name="name"
-                value={newCharacter.name}
-                onChange={handleChange}
-                placeholder="Name"
-                required
-            />
-            <label for ="lvl-class-HPmax">
-            <div className = "form-row">
-                <input
-                    type="number"
-                    name="lvl"
-                    value={newCharacter.lvl}
-                    onChange={handleChange}
-                    placeholder="Level"
-                    required
-                />
-                <span></span>
+            <h2>Character Submission</h2>
+
+            <div className = "labelPair">
+                <label for="name-input">Name</label>
                 <input
                     type="text"
-                    name="class"
-                    value={newCharacter.class}
+                    className="name-input"
+                    id="name-input"
+                    name="name"
+                    value={newCharacter.name}
                     onChange={handleChange}
-                    placeholder="Class"
-                    required
-                />
-                <span></span>
-                <input
-                    type="int"
-                    name="HP_max"
-                    value={newCharacter.HP_max}
-                    onChange={handleChange}
-                    placeholder="Max HP"
+                    placeholder="Name"
                     required
                 />
             </div>
-            </label>
 
-            <input
-                type="text"
-                name="race"
-                value={newCharacter.race}
-                onChange={handleChange}
-                placeholder="Race"
-                required
-            />
+            <div className = "form-row" id= "fr-1">
+                <div className = "labelPair">
+                    <label for="lvl">Level</label>
+                    <input
+                        type="number"
+                        name="lvl"
+                        id="lvl"
+                        value={newCharacter.lvl}
+                        onChange={handleChange}
+                        placeholder="Level"
+                        required
+                    />
+                </div>
+
+                <span></span>
+
+                <div className = "labelPair">
+                    <label for="class">Class</label>
+                    <input
+                        type="text"
+                        name="class"
+                        id="class"
+                        value={newCharacter.class}
+                        onChange={handleChange}
+                        placeholder="Class"
+                        required
+                    />
+                </div>
+
+                <span></span>
+
+                <div className = "labelPair">
+                    <label for="HP_max">HP Max</label>
+                    <input
+                        type="int"
+                        name="HP_max"
+                        id="HP_max"
+                        value={newCharacter.HP_max}
+                        onChange={handleChange}
+                        placeholder="Max HP"
+                        required
+                    />
+                </div>
+
+            </div>
+
+            <div className = "labelPair">
+                <label for="race">Race</label>
+                <input
+                    type="text"
+                    name="race"
+                    id="race"
+                    value={newCharacter.race}
+                    onChange={handleChange}
+                    placeholder="Race"
+                    required
+                />
+            </div>
 
             {/** -------------------------- */}
             {/** Form to handle Ascore inputs. */}
-            <div className = "form-row">
-                
-                    <p>Ascore Form</p>
+            <div className = "subform">
+
+                    <p>Ascore form</p>
+                    <div className ="form-row">
                     {myascores.map((ascore, index) => (
+                        <>
                         <div className = "ascore" key = {index}>
-                            <input
-                                type="text"
-                                value={ascore.title}
-                                onChange={(e) => handleAscoreChange(index,'title',e.target.value)}
-                                placeholder="CON"
-                            />
+                            <div className = "labelPair">
+                                <label for="ascore-title">Title</label>
+                                <input
+                                    type="text"
+                                    id="ascore-title"
+                                    value={ascore.title}
+                                    onChange={(e) => handleAscoreChange(index,'title',e.target.value)}
+                                    placeholder="CON"
+                                />
+                            </div>
+
                             <span></span>
-                            <input
-                                type="number"
-                                value={ascore.score}
-                                onChange={(e) => handleAscoreChange(index, 'score', e.target.value)}
-                                placeholder="0"
-                            />
+
+                            <div className = "labelPair">
+                                <label for="ascore-score">Score</label>
+                                <input
+                                    type="number"
+                                    id="ascore-score"
+                                    value={ascore.score}
+                                    onChange={(e) => handleAscoreChange(index, 'score', e.target.value)}
+                                    placeholder="0"
+                                />
+                            </div>
+
                             <button type="button" onClick={() => handleRemoveAscore(index)}>Remove</button>
                         </div>
-                    ))};
-                    <button type="button" onClick={handleAddAscore}>Add Ability Score</button>
+                        <span></span>
+                        </>
+                    ))}
+                    <button type="button" id="add-btn" onClick={handleAddAscore}>Add</button>
                 
             </div>
+            </div>
             {/** Form to handle feat inputs. */}
-            <div className = "form-row">
+            <div className = "subform">
                 
                     <p>Feat Form</p>
+                    <div className = "form-row">
                     {myfeats.map((feat, index) => (
+                        <>
                         <div className = 'feat'>
-                            <input
-                                type="text"
-                                name="featTitle"
-                                value={feat.title}
-                                onChange={(e) => handleFeatChange(index,'title',e.target.value)}
-                                placeholder="Title"
-                                required
-                            />
+
+                            <div className = "labelPair">
+                                <label for="feat-title">Title</label>
+                                <input
+                                    type="text"
+                                    name="featTitle"
+                                    id="feat-title"
+                                    value={feat.title}
+                                    onChange={(e) => handleFeatChange(index,'title',e.target.value)}
+                                    placeholder="Title"
+                                    required
+                                />
+                            </div>
+
                             <span></span>
-                            <input
-                                type="text"
-                                name="featBody"
-                                value={feat.body}
-                                onChange={(e) => handleFeatChange(index,'body',e.target.value)}
-                                placeholder="Body"
-                                required
-                            />
+
+                            <div className = "labelPair">
+                            <label for="feat-body">Description</label>
+                                <input
+                                    type="text"
+                                    name="feat-body"
+                                    value={feat.body}
+                                    onChange={(e) => handleFeatChange(index,'body',e.target.value)}
+                                    placeholder="Body"
+                                    required
+                                />
+                            </div>
+
                             <button type="button" onClick={() => handleRemoveFeat(index)}>Remove</button>
                         </div>
-                    ))};
-                    <button type="button" onClick={handleAddFeat}>Add Feat</button>
-
+                        <span></span>
+                        </>
+                    ))}
+                    <button type="button" id="add-btn" onClick={handleAddFeat}>Add</button>
+                </div>
             </div>
             {/** Form to handle spell inputs. */}
             <label for = "spellform">
-            <div className = "form-row">
+            <div className = "subform">
                 
                     <p>Spell Form</p>
+                    <div className="form-row">
                     {myspells.map((spell, index) => (
+                        <>
                         <div className = "spell">
-                            <input
-                                type="text"
-                                name="spellTitle"
-                                value={spell.title}
-                                onChange={(e) => handleSpellChange(index, 'title',e.target.value)}
-                                placeholder="Fireball"
-                                required
-                            />
+                            
+                            <div className = "labelPair">
+                                <label for="spell-title">Title</label>
+                                <input
+                                    type="text"
+                                    name="spellTitle"
+                                    id="spell-title"
+                                    value={spell.title}
+                                    onChange={(e) => handleSpellChange(index, 'title',e.target.value)}
+                                    placeholder="Fireball"
+                                    required
+                                />
+                            </div>
+
                             <span></span>
-                            <input
-                                type="int"
-                                name="spellLevel"
-                                value={spell.level}
-                                onChange={(e) => handleSpellChange(index,'level',e.target.value)}
-                                placeholder="1"
-                                required
-                            />
+
+                            <div className = "labelPair">
+                                <label for="spell-level">Level</label>
+                                <input
+                                    type="int"
+                                    name="spellLevel"
+                                    id="spell-level"
+                                    value={spell.level}
+                                    onChange={(e) => handleSpellChange(index,'level',e.target.value)}
+                                    placeholder="1"
+                                    required
+                                />
+                            </div>
+
                             <span></span>
-                            <input
-                                type="int"
-                                name="spellBody"
-                                value={spell.body}
-                                onChange={(e) => handleSpellChange(index,'body',e.target.value)}
-                                placeholder="A fiery ball!"
-                                required
-                            />
+
+                            <div className = "labelPair">
+                                <label for="spell-body">Description</label>
+                                <input
+                                    type="int"
+                                    name="spellBody"
+                                    id="spell-body"
+                                    value={spell.body}
+                                    onChange={(e) => handleSpellChange(index,'body',e.target.value)}
+                                    placeholder="A fiery ball!"
+                                    required
+                                />
+                            </div>
+
                             <button type="button" onClick={() => handleRemoveSpell(index)}>Remove</button>
                         </div>
-                    ))};
-                    <button type="button" onClick={handleAddSpell}>Add Spell</button>
-                
+                        <span></span>
+                        </>
+                    ))}
+                    <button type="button" id="add-btn" onClick={handleAddSpell}>Add</button>
+                </div>
             </div>
             </label>
             {/** Form to handle item inputs. */}
-            <div className = "form-row">
+            <div className = "subform">
                 
                 <p>Item Form</p>
+                <div className = "form-row">
                     {myitems.map((item, index) => (
+                        <>
                         <div className = "item">
-                            <input
-                                type="text"
-                                name="itemTitle"
-                                value={item.title}
-                                onChange={(e) => handleItemChange(index, 'title',e.target.value)}
-                                placeholder="Stick"
-                                required
-                            />
+                            <label for="item-title">Title</label>
+
+                            <div className = "labelPair">
+                                <input
+                                    type="text"
+                                    name="itemTitle"
+                                    id="item-title"
+                                    value={item.title}
+                                    onChange={(e) => handleItemChange(index, 'title',e.target.value)}
+                                    placeholder="Stick"
+                                    required
+                                />
+                            </div>
+
                             <span></span>
-                            <input
-                                type="double"
-                                name="itemWeight"
-                                value={item.weight}
-                                onChange={(e) => handleItemChange(index,'weight',e.target.value)}
-                                placeholder="0.0"
-                                required
-                            />
+
+                            <div className = "labelPair">
+                                <label for="item-weight">Weight</label>
+                                <input
+                                    type="double"
+                                    name="itemWeight"
+                                    id="item-weight"
+                                    value={item.weight}
+                                    onChange={(e) => handleItemChange(index,'weight',e.target.value)}
+                                    placeholder="0.0"
+                                    required
+                                />
+                            </div>
+
                             <span></span>
+
+                            <div className = "labelPair">
+                            <label for="item-worth">Worth</label>
                             <input
                                 type="text"
                                 name="itemWorth"
+                                id="item-worth"
                                 value={item.body}
                                 onChange={(e) => handleItemChange(index, 'body', e.target.value)}
                                 placeholder="1 gold"
                                 required
                             />
+                            </div>
+
                             <button type="button" onClick={() => handleRemoveItem(index)}>Remove</button>
                         </div>
-                    ))};
-                    <button type="button" onClick={handleAddItem}>Add Item</button>
-
+                        <span></span>
+                        </>
+                    ))}
+                    <button type="button" id="add-btn" onClick={handleAddItem}>Add</button>
+                </div>
             </div>
             {/** -------------------------- */}
+            
+            <div className = "labelPair">
+                <label for="lore-writeup">Lore</label>
+                <textarea
+                    type="text"
+                    className="lore-input"
+                    id="lore-writeup"
+                    name="lorewriteup"
+                    value={newCharacter.lorewriteup}
+                    onChange={handleChange}
+                    placeholder="Lore Writeup"
+                    required
+                />
+            </div>
 
-            <textarea
-                type="text"
-                className="lore-input"
-                name="lorewriteup"
-                value={newCharacter.lorewriteup}
-                onChange={handleChange}
-                placeholder="Lore Writeup"
-                required
-            />
             <button type ="submit"> Submit your character! </button>
             </form>
         </div>
