@@ -41,7 +41,7 @@ function Login() {
     // If the form has been submitted...
     if (isSubmitted) {
         return (
-            <p>Logged in! Return to <Link to='/home'>HOME</Link></p>
+            <p>Logged in! Return to <Link to='/'>HOME</Link></p>
         );
     }
     // Else

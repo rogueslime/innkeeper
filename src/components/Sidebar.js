@@ -8,7 +8,7 @@ function Sidebar({isOpen}) {
     return (
         <div className={`sidebar ${isOpen ? 'open' : ''}`}>
             <div className="content">
-                <Link to="/home">Home</Link>
+                <Link className='toplink' to="/">Home</Link>
                 <Link to="/public-inn">Public Inn</Link>
                 {currentUser ? (<></>) : ( <Link to="/register">Register</Link> )}
             </div>

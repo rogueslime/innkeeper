@@ -34,7 +34,7 @@ function App() {
                         { currentUser ? (
                         <>
                         <p>Hello, {currentUser.username}.</p>
-                        <Link onClick = {logout} class='header-sign' to="/home">Sign Out.</Link>
+                        <Link onClick = {logout} class='header-sign' to="/">Sign Out.</Link>
                         </>
                         ) : (
                         <Link class='header-sign' to="/login">Sign In</Link>
@@ -49,7 +49,7 @@ function App() {
                 {/*Main content*/}
                 <div className="main-content">
                     <Routes>
-                        <Route path="/home" element={<HomePage />} />
+                        <Route path="/" element={<HomePage />} />
                         <Route path="/public-inn" element={<InnView />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/login" element={<Login />} />
