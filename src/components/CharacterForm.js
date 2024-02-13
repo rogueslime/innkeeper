@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { useAuth } from '../context/AuthContext';
 import './style/CharacterForm.css';
 
-function CharacterForm({ addCharacter }) {
+function CharacterForm({ addCharacter, isOpen }) {
     const { currentUser, updateCurrentUser } = useAuth();
 
     // States to hold feats, spells, and items for character submission process
@@ -142,8 +142,8 @@ function CharacterForm({ addCharacter }) {
     };
 
     return (
-        <form className="character-form" onSubmit={handleSubmit}>
-            <div className="input-container">
+        <div className={`input-container ${isOpen ? 'open' : ''}`}>
+            <form className="character-form" onSubmit={handleSubmit}>
             <input
                 type="text"
                 className="name-input"
@@ -338,8 +338,8 @@ function CharacterForm({ addCharacter }) {
                 required
             />
             <button type ="submit"> Submit your character! </button>
-            </div>
-        </form>
+            </form>
+        </div>
     )
 }
 

@@ -1,18 +1,23 @@
-.character-form {
-    padding:5px;
-    width:70%;
-    border: 1px solid #222;
+.input-container {
+    position: fixed;
+    top: 10%;
+    right: 5%;
+    min-width: 30%;
+    max-width: 80%; /* Adjust width as needed */
+    min-height:35%;
+    max-height:80%;
+    overflow-y:auto;
     background-color: #333;
-    box-shadow: 0 2px 4px rgba(0,0,0,1);
+    padding: 10px;
+    border-radius:8px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    transform: translateX(120%);
+    transition: transform 0.3s ease;
 }
 
-.input-container {
-    width: 70%;
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-}
+.input-container.open {
+    transform: translateX(0);
+  }
 
 .character-form input {
     margin-bottom: 10px;
@@ -28,22 +33,8 @@
     flex-direction:row;
 }
 
-.form-row input {
-    width: 50px;
-}
-
 .form-row span {
     margin-left:10px;
-}
-
-.name-input {
-    width: 180px;
-}
-
-.lore-input {
-    width: 50%;
-    height: 100px;
-    margin-bottom: 10px;
 }
 
 .ascore, .feat, .spell, .item{

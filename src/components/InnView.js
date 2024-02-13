@@ -13,6 +13,7 @@ function InnView() {
     const [totalPages, setTotalPages] = useState(0);
 
     const [expandedCharacter, setExpandedCharacter] = useState(null);
+    const [isCharacterFormOpen, setIsCharacterFormOpen] = useState(false);
     
     // Unexpand the fanned out character menu.
     const handleUnexpandCharacter = () => {
@@ -83,7 +84,7 @@ function InnView() {
         
             {/*If currentUser, allow access to Add Character form*/}
             { currentUser ? (
-                <CharacterForm addCharacter={addCharacter} />
+                <CharacterForm addCharacter={addCharacter} isOpen={isCharacterFormOpen} />
             ) : (
                 <></>
             )}
@@ -97,6 +98,11 @@ function InnView() {
                     onExpand={handleExpandCharacter} // Passing method as onExpand
                     onDelete={handleDeleteCharacter}/> // Passing method as onDelete
                 ))}
+
+                {/** A button to manage whether or not the character creator is open. */}
+                <button onClick = {() => setIsCharacterFormOpen(prev => !prev)}>
+                    {isCharacterFormOpen ? 'Close Form' : 'Open Form'}
+                </button>
             </div>
 
         
