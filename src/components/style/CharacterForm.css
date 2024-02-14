@@ -17,7 +17,12 @@
 }
 
 .input-container h2 {
-    color: darkorange;
+    /*color: darkorange;*/
+    font-weight:bolder;
+    background: linear-gradient(to right, #ff7e5f, darkorange);
+    -webkit-background-clip:text;
+    color:transparent;
+    letter-spacing: 1.5px;
 }
 
 .input-container.open {
@@ -36,9 +41,11 @@
 }
 
 .add-btn {
-    width:50px;
-    height:30px;
+    min-width:80px;
+    width:auto;
+    height:20px;
     align-items:center;
+    margin-bottom:5px;
 }
 
 .formText {
@@ -50,7 +57,7 @@
 }
 
 .subform input {
-    width:50px;
+    width:70px;
     background-color: orange;
 }
 
@@ -96,4 +103,8 @@
 .lore-input {
     width:98%;
     min-height:50px;
+}
+
+.submit-character-button {
+    
 }

@@ -237,6 +237,7 @@ function CharacterForm({ addCharacter, isOpen }) {
 
             {/** -------------------------- */}
                     <p className= "formText">Ascore form</p>
+                    <button type="button" className="add-btn" onClick={handleAddAscore}>Add Ability Score</button>
             {/** Form to handle Ascore inputs. */}
             <div className = "subform">
 
@@ -273,12 +274,12 @@ function CharacterForm({ addCharacter, isOpen }) {
                         <span></span>
                         </>
                     ))}
-                    <button type="button" className="add-btn" onClick={handleAddAscore}>Add</button>
                 
             </div>
             </div>
             {/** Form to handle feat inputs. */}
                     <p className = "formText">Feat Form</p>
+                    <button type="button" className="add-btn" onClick={handleAddFeat}>Add Feature</button>
             <div className = "subform">
                 
                     <div className = "form-row">
@@ -316,11 +317,11 @@ function CharacterForm({ addCharacter, isOpen }) {
                         <span></span>
                         </>
                     ))}
-                    <button type="button" className="add-btn" onClick={handleAddFeat}>Add</button>
                 </div>
             </div>
             {/** Form to handle spell inputs. */}
                     <p className = "formText">Spell Form</p>
+                    <button type="button" className="add-btn" onClick={handleAddSpell}>Add Spell</button>
             <label for = "spellform">
             <div className = "subform">
                 
@@ -373,11 +374,11 @@ function CharacterForm({ addCharacter, isOpen }) {
                         <span></span>
                         </>
                     ))}
-                    <button type="button" className="add-btn" onClick={handleAddSpell}>Add</button>
                 </div>
             </div>
             </label>
                 <p className="formText">Item Form</p>
+                <button type="button" className="add-btn" onClick={handleAddItem}>Add Item</button>
             {/** Form to handle item inputs. */}
             <div className = "subform">
                 
@@ -430,12 +431,11 @@ function CharacterForm({ addCharacter, isOpen }) {
                         <span></span>
                         </>
                     ))}
-                    <button type="button" className="add-btn" onClick={handleAddItem}>Add</button>
                 </div>
             </div>
             {/** -------------------------- */}
-
-            <button type ="submit"> Submit your character! </button>
+            <p className = "formText"></p>
+            <button className="submit-character-button" type ="submit"> Submit your character! </button>
             </form>
         </div>
     )
