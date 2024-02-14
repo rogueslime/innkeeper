@@ -146,18 +146,33 @@ function CharacterForm({ addCharacter, isOpen }) {
             <form className="character-form" onSubmit={handleSubmit}>
             <h2>Character Submission</h2>
 
-            <div className = "labelPair">
-                <label for="name-input">Name</label>
-                <input
-                    type="text"
-                    className="name-input"
-                    id="name-input"
-                    name="name"
-                    value={newCharacter.name}
-                    onChange={handleChange}
-                    placeholder="Name"
-                    required
-                />
+            <div className="form-row" id="fr-0">
+                <div className = "labelPair">
+                    <label for="name-input">Name</label>
+                    <input
+                        type="text"
+                        className="name-input"
+                        id="name-input"
+                        name="name"
+                        value={newCharacter.name}
+                        onChange={handleChange}
+                        placeholder="Name"
+                        required
+                    />
+                </div>
+
+                <div className = "labelPair">
+                    <label for="race">Race</label>
+                    <input
+                        type="text"
+                        name="race"
+                        id="race"
+                        value={newCharacter.race}
+                        onChange={handleChange}
+                        placeholder="Race"
+                        required
+                    />
+                </div>
             </div>
 
             <div className = "form-row" id= "fr-1">
@@ -207,23 +222,24 @@ function CharacterForm({ addCharacter, isOpen }) {
             </div>
 
             <div className = "labelPair">
-                <label for="race">Race</label>
-                <input
+                <label for="lore-writeup">Lore</label>
+                <textarea
                     type="text"
-                    name="race"
-                    id="race"
-                    value={newCharacter.race}
+                    className="lore-input"
+                    id="lore-writeup"
+                    name="lorewriteup"
+                    value={newCharacter.lorewriteup}
                     onChange={handleChange}
-                    placeholder="Race"
+                    placeholder="I'm just three goblins under a coat!"
                     required
                 />
             </div>
 
             {/** -------------------------- */}
+                    <p className= "formText">Ascore form</p>
             {/** Form to handle Ascore inputs. */}
             <div className = "subform">
 
-                    <p>Ascore form</p>
                     <div className ="form-row">
                     {myascores.map((ascore, index) => (
                         <>
@@ -238,8 +254,6 @@ function CharacterForm({ addCharacter, isOpen }) {
                                     placeholder="CON"
                                 />
                             </div>
-
-                            <span></span>
 
                             <div className = "labelPair">
                                 <label for="ascore-score">Score</label>
@@ -262,9 +276,9 @@ function CharacterForm({ addCharacter, isOpen }) {
             </div>
             </div>
             {/** Form to handle feat inputs. */}
+                    <p className = "formText">Feat Form</p>
             <div className = "subform">
                 
-                    <p>Feat Form</p>
                     <div className = "form-row">
                     {myfeats.map((feat, index) => (
                         <>
@@ -282,8 +296,6 @@ function CharacterForm({ addCharacter, isOpen }) {
                                     required
                                 />
                             </div>
-
-                            <span></span>
 
                             <div className = "labelPair">
                             <label for="feat-body">Description</label>
@@ -306,10 +318,10 @@ function CharacterForm({ addCharacter, isOpen }) {
                 </div>
             </div>
             {/** Form to handle spell inputs. */}
+                    <p className = "formText">Spell Form</p>
             <label for = "spellform">
             <div className = "subform">
                 
-                    <p>Spell Form</p>
                     <div className="form-row">
                     {myspells.map((spell, index) => (
                         <>
@@ -328,8 +340,6 @@ function CharacterForm({ addCharacter, isOpen }) {
                                 />
                             </div>
 
-                            <span></span>
-
                             <div className = "labelPair">
                                 <label for="spell-level">Level</label>
                                 <input
@@ -342,8 +352,6 @@ function CharacterForm({ addCharacter, isOpen }) {
                                     required
                                 />
                             </div>
-
-                            <span></span>
 
                             <div className = "labelPair">
                                 <label for="spell-body">Description</label>
@@ -367,17 +375,17 @@ function CharacterForm({ addCharacter, isOpen }) {
                 </div>
             </div>
             </label>
+                <p className="formText">Item Form</p>
             {/** Form to handle item inputs. */}
             <div className = "subform">
                 
-                <p>Item Form</p>
                 <div className = "form-row">
                     {myitems.map((item, index) => (
                         <>
                         <div className = "item">
-                            <label for="item-title">Title</label>
 
                             <div className = "labelPair">
+                                <label for="item-title">Title</label>
                                 <input
                                     type="text"
                                     name="itemTitle"
@@ -388,8 +396,6 @@ function CharacterForm({ addCharacter, isOpen }) {
                                     required
                                 />
                             </div>
-
-                            <span></span>
 
                             <div className = "labelPair">
                                 <label for="item-weight">Weight</label>
@@ -403,8 +409,6 @@ function CharacterForm({ addCharacter, isOpen }) {
                                     required
                                 />
                             </div>
-
-                            <span></span>
 
                             <div className = "labelPair">
                             <label for="item-worth">Worth</label>
@@ -428,20 +432,6 @@ function CharacterForm({ addCharacter, isOpen }) {
                 </div>
             </div>
             {/** -------------------------- */}
-            
-            <div className = "labelPair">
-                <label for="lore-writeup">Lore</label>
-                <textarea
-                    type="text"
-                    className="lore-input"
-                    id="lore-writeup"
-                    name="lorewriteup"
-                    value={newCharacter.lorewriteup}
-                    onChange={handleChange}
-                    placeholder="Lore Writeup"
-                    required
-                />
-            </div>
 
             <button type ="submit"> Submit your character! </button>
             </form>

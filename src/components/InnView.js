@@ -98,16 +98,15 @@ function InnView() {
                     onExpand={handleExpandCharacter} // Passing method as onExpand
                     onDelete={handleDeleteCharacter}/> // Passing method as onDelete
                 ))}
-
-                {/** A button to manage whether or not the character creator is open. */}
-                <button onClick = {() => setIsCharacterFormOpen(prev => !prev)}>
-                    {isCharacterFormOpen ? 'Close Form' : 'Open Form'}
-                </button>
             </div>
 
         
             {/*Nav Buttons*/}
             <div className = 'navButtons'>
+                {/** A button to manage whether or not the character creator is open. */}
+                <button className="cformbutton" onClick = {() => setIsCharacterFormOpen(prev => !prev)}>
+                    {isCharacterFormOpen ? 'Close Form' : 'Open Form'}
+                </button>
                 <button name = 'nav' onClick={handlePrevious} disabled={currentPage === 1}>Previous</button>
                 <button name = 'nav' onClick={handleNext} disabled={currentPage === totalPages}>Next</button>
             </div>

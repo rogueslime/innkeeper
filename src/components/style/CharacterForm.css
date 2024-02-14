@@ -30,17 +30,20 @@
     align-items:center;
 }
 
-.character-form input {
-    margin-bottom: 10px;
-}
-
 .character-form p {
     color: #ccc;
-    margin-right: 10px;
 }
 
 #add-btn {
     width:50px;
+}
+
+.formText {
+    width: 90%;
+    display:flex;
+    justify-content:center;
+    border-top: 1px solid #ccc;
+    padding-top:10px;
 }
 
 .subform input {
@@ -50,29 +53,33 @@
 .form-row {
     display: flex;
     flex-direction:row;
+    width:100%;
+}
+
+#fr-0 input {
+    width:95%;
 }
 
 #fr-1 input {
-    width:50px;
-}
-
-#fr-1 span {
-    margin-left:10px;
+    width:95%;
 }
 
 .labelPair {
     display:flex;
+    width:100%;
     flex-direction:column;
     align-items:flex-start;
 }
 
 .labelPair label {
     color:#ccc;
+    font-size:small;
 }
 
 .ascore, .feat, .spell, .item {
     background-color:darkorange;
-    padding:2px;
+    padding:10px;
+    border-radius:8px;
 }
 .ascore, .feat, .spell, .item p {
     color:#ccc;
@@ -80,4 +87,9 @@
 
 .form-row span {
     margin-left:5px;
+}
+
+.lore-input {
+    width:98%;
+    min-height:50px;
 }
