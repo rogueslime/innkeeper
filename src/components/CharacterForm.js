@@ -257,13 +257,15 @@ function CharacterForm({ addCharacter, isOpen }) {
 
                             <div className = "labelPair">
                                 <label for="ascore-score">Score</label>
-                                <input
+                                <select
                                     type="number"
                                     id="ascore-score"
                                     value={ascore.score}
                                     onChange={(e) => handleAscoreChange(index, 'score', e.target.value)}
                                     placeholder="0"
-                                />
+                                >
+                                    <option>1</option> {/**doesnt work */}
+                                </select>
                             </div>
 
                             <button type="button" onClick={() => handleRemoveAscore(index)}>Remove</button>
@@ -271,7 +273,7 @@ function CharacterForm({ addCharacter, isOpen }) {
                         <span></span>
                         </>
                     ))}
-                    <button type="button" id="add-btn" onClick={handleAddAscore}>Add</button>
+                    <button type="button" className="add-btn" onClick={handleAddAscore}>Add</button>
                 
             </div>
             </div>
@@ -314,7 +316,7 @@ function CharacterForm({ addCharacter, isOpen }) {
                         <span></span>
                         </>
                     ))}
-                    <button type="button" id="add-btn" onClick={handleAddFeat}>Add</button>
+                    <button type="button" className="add-btn" onClick={handleAddFeat}>Add</button>
                 </div>
             </div>
             {/** Form to handle spell inputs. */}
@@ -371,7 +373,7 @@ function CharacterForm({ addCharacter, isOpen }) {
                         <span></span>
                         </>
                     ))}
-                    <button type="button" id="add-btn" onClick={handleAddSpell}>Add</button>
+                    <button type="button" className="add-btn" onClick={handleAddSpell}>Add</button>
                 </div>
             </div>
             </label>
@@ -428,7 +430,7 @@ function CharacterForm({ addCharacter, isOpen }) {
                         <span></span>
                         </>
                     ))}
-                    <button type="button" id="add-btn" onClick={handleAddItem}>Add</button>
+                    <button type="button" className="add-btn" onClick={handleAddItem}>Add</button>
                 </div>
             </div>
             {/** -------------------------- */}

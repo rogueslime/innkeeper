@@ -28,14 +28,17 @@
     display:flex;
     flex-direction: column;
     align-items:center;
+    width:100%;
 }
 
 .character-form p {
     color: #ccc;
 }
 
-#add-btn {
+.add-btn {
     width:50px;
+    height:30px;
+    align-items:center;
 }
 
 .formText {
@@ -48,6 +51,7 @@
 
 .subform input {
     width:50px;
+    background-color: orange;
 }
 
 .form-row {
