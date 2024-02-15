@@ -6,7 +6,7 @@ import CharacterDetails from './CharacterDetails'
 import './style/InnView.css'
 
 function InnView() {
-    const { currentUser } = useAuth();
+    const { currentUser, updateCurrentUser } = useAuth();
 
     const [characters, setCharacters] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -26,6 +26,8 @@ function InnView() {
     }
 
     // Deletes a character, including a confirmation window.
+    // ** IMPORTANT: Need to add functionality to make this delete character
+    // from user as well
     const handleDeleteCharacter = (characterId) => {
         const isConfirmed = window.confirm('Are you sure you want to delete this character?');
         console.log(characterId);

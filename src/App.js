@@ -8,6 +8,7 @@ import Sidebar from './components/Sidebar';
 import HomePage from './components/HomePage';
 import Register from './components/Registration';
 import Login from './components/Login';
+import MyProfile from './components/MyProfile';
 
 import './components/style/App.css';
 import logo from './images/Innkeeper-logo.png';
@@ -53,6 +54,7 @@ function App() {
                         <Route path="/public-inn" element={<InnView />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/login" element={<Login />} />
+                        <Route path="/my-profile" element={<MyProfile />} />
                     </Routes>
                 </div>
             </div>

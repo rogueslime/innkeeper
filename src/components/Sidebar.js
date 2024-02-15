@@ -11,6 +11,7 @@ function Sidebar({isOpen}) {
                 <Link className='toplink' to="/">Home</Link>
                 <Link to="/public-inn">Public Inn</Link>
                 {currentUser ? (<></>) : ( <Link to="/register">Register</Link> )}
+                {currentUser ? (<Link to="/my-profile">My Profile</Link>) : (<></>)}
             </div>
         </div>
     )
