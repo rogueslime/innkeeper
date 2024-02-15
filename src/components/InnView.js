@@ -63,11 +63,11 @@ function InnView() {
                 console.log('Characters on next page fetched.')
             })
             .catch(error => console.error('Error fetching characters: ', error));
-    }, [currentPage]);
+    }, [currentPage, characters]);
 
     // Adds a character based on the input.
     const addCharacter = (character) => {
-        setCharacters(prevCharacters => [...prevCharacters, { ...character, id: characters.length + 1 }]);
+        setCharacters(characters => [...characters, { ...character, id: characters.length + 1 }]);
     };
 
     // Next page.
@@ -110,7 +110,7 @@ function InnView() {
                     {isCharacterFormOpen ? 'Close Form' : 'Open Form'}
                 </button>
                 <button name = 'nav' onClick={handlePrevious} disabled={currentPage === 1}>Previous</button>
-                <button name = 'nav' onClick={handleNext} disabled={currentPage === totalPages}>Next</button>
+                <button name = 'nav' onClick={handleNext} disabled={currentPage >= totalPages}>Next</button>
             </div>
 
             

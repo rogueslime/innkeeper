@@ -85,9 +85,9 @@ function CharacterForm({ addCharacter, isOpen }) {
 
     const [newCharacter, setNewCharacter] = useState({
         name:'',
+        level: 0,
         class: '',
         race: '',
-        lvl: '',
         HP_max: 0,
         ascores: [],
         features: [],
@@ -127,7 +127,7 @@ function CharacterForm({ addCharacter, isOpen }) {
             console.log('Success:', result);
     
             // Optionally, clear the form here if submission was successful
-            setNewCharacter({name: '', class: '', race: '', lvl: '', HP_max: 0, ascores: [], features: [], spells: [], backpack: [], lorewriteup:''});
+            setNewCharacter({name: '', class: '', race: '', level: '', HP_max: 0, ascores: [], features: [], spells: [], backpack: [], lorewriteup:''});
 
             // Updated currentUser context to grab new added character
             const updatedCharacterList = [...currentUser.characterList, result._id];
@@ -177,14 +177,14 @@ function CharacterForm({ addCharacter, isOpen }) {
 
             <div className = "form-row" id= "fr-1">
                 <div className = "labelPair">
-                    <label for="lvl">Level</label>
+                    <label for="level">Level</label>
                     <input
                         type="number"
-                        name="lvl"
-                        id="lvl"
-                        value={newCharacter.lvl}
+                        name="level"
+                        id="level"
+                        value={newCharacter.level}
                         onChange={handleChange}
-                        placeholder="Level"
+                        placeholder="20"
                         required
                     />
                 </div>
@@ -209,7 +209,7 @@ function CharacterForm({ addCharacter, isOpen }) {
                 <div className = "labelPair">
                     <label for="HP_max">HP Max</label>
                     <input
-                        type="int"
+                        type="number"
                         name="HP_max"
                         id="HP_max"
                         value={newCharacter.HP_max}

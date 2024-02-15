@@ -1,10 +1,10 @@
 .expanded {
-    border: 1px solid #fff;
+    border: 1px solid #222;
     border-radius: 8px;
     max-width: 790px; /* Use max-width for responsiveness */
     padding: 20px;
     margin: 10px auto; /* Center align the expanded section */
-    background-color: #f9f9f9;
+    background-color: #333;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column; /* Stack sections vertically */
@@ -12,48 +12,59 @@
 }
 
 
-.expanded h3 {
-    color: #333; /* More emphasis on section titles */
-    margin-bottom: 5px;
+.expanded h1 {
+    font-weight:bolder;
+    background: linear-gradient(to right, #ff7e5f, darkorange);
+    -webkit-background-clip:text;
+    color:transparent;
+    letter-spacing: 1.5px;
 }
 
-.expanded ul {
-    display: flex;
-    flex-wrap: wrap; /* Wrap items to the next line if space runs out */
-    border-bottom: 1px solid #eee;
-    margin-bottom: 5px; /* Space between sections */
-    padding: 10px;
-    list-style-type: none; /* Remove bullet points for a cleaner look */
+.expanded span {
+    border-top: 1px solid #ccc;
+    width:95%;
 }
 
 .expanded p {
     text-align: center;
+    color: #ccc;
 }
 
 .expanded ul li {
     margin-right: 15px; /* Space between items */
-    margin-bottom: 3px; /* Space between rows when wrapped */
+    color: #ccc;
+    list-style-type: none;
 }
 
-.ascores li {
-    border: 1px solid;
-    padding: 5px;
+.ascores, .feats, .spells, .backpack {
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.feats li {
-    border: 1px solid;
-    padding: 5px;
-    max-width: 200px;
+.ascores ul, .feats ul, .spells ul, .backpack ul {
+    width: auto;
 }
 
-.spells li {
-    border: 1px solid;
+.ascores li, .feats li, .spells li, .backpack li {
+    display: flex;
+    flex-direction: column;
+    background-color:darkorange;
+    border-radius:8px;
     padding: 5px;
-    max-width: 200px;
+    height: auto;
+    align-items:center;
+    justify-content:center;
 }
 
 .backpack li {
-    border: 1px solid;
-    padding: 5px;
-    max-width: 200px;
+    width: 25%;
+}
+
+.ascores li {
+    width: auto;
+}
+
+.card-body {
+    width: 90%;
 }

@@ -8,6 +8,7 @@ function CharacterDetails({character, onUnexpand}) { // Create method to expand 
             <button onClick = {() => onUnexpand()}>Unexpand</button>
 
             <ul><h1>{character.name}</h1></ul>
+            <span></span>
             <div className = 'lore'>
                 {character.lorewriteup ? (
                     <ul><p>{character.lorewriteup}</p></ul>
@@ -15,44 +16,48 @@ function CharacterDetails({character, onUnexpand}) { // Create method to expand 
                     <p>no lore available</p>
                 )}
             </div>
-            <div className = 'ascores'>
+            <span></span>
+            <div>
                 {character.ascores ? ( // If character has ascores...
-                    <ul>
+                    <ul className = 'ascores'>
                         {character.ascores.map((score, index) => (
-                            <li key={index}><p><b>{score.title} : </b>{score.score}</p></li>
+                            <li id = 'ascore' key={index}><p><b>{score.title}</b></p><p>{score.score}</p></li>
                         ))}
                     </ul>
                     ) : ( // If else ...
                     <p>no ascores available</p>
                 )}
             </div>
-            <div className = 'feats'>
+            <span></span>
+            <div>
                 {character.features ? ( // If character has feats...
-                    <ul>
+                    <ul  className = 'feats'>
                         {character.features.map((feat, index) => (
-                            <li key={index}>{feat.title} - {feat.body}</li>
+                            <li key={index}><p>{feat.title}</p><p className = 'card-body'>{feat.body}</p></li>
                         ))}
                     </ul>
                     ) : ( // If else ...
                     <p>no feats available</p>
                 )}
             </div>
-            <div className = 'spells'>
+            <span></span>
+            <div>
                 {character.spells ? ( // If character has spells...
-                    <ul>
+                    <ul  className = 'spells'>
                         {character.spells.map((spell, index) => (
-                            <li key={index}>{spell.title} / {spell.level} - {spell.body}</li>
+                            <li key={index}><p><b>{spell.title} / {spell.level}</b></p><p className = 'card-body'>{spell.body}</p></li>
                         ))}
                     </ul>
                     ) : ( // If else ...
                     <p>no spells available</p>
                 )}
             </div>
-            <div className = 'backpack'>
+            <span></span>
+            <div>
                 {character.backpack ? ( // If character has items...
-                    <ul>
+                    <ul  className = 'backpack'>
                         {character.backpack.map((item, index) => (
-                            <li key={index}>{item.title} // {item.weight} // {item.worth} - {item.body}</li>
+                            <li key={index}><p><b>{item.title}</b>// {item.weight} // {item.worth}</p><p className = 'card-body'>{item.body}</p></li>
                         ))}
                     </ul>
                     ) : ( // If else ...

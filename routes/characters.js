@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Character = require('../models/characterSchema');
+const User = require('../models/user')
 const authMiddleware = require('../middleware/auth');
 
 // Endpoint to get a list of characters from ALL characters. Returns 4 characters. Supports pagination.
@@ -28,8 +29,13 @@ router.get('/', async (req, res) => {
 });
 
 // Endpoint to get a list of characters from a specific user's characters. Returns 4 characters. Supports pagination.
-router.get('/:userid', async (req, res) => {
-    const userId = req.params.userid;
+router.get('/:userid', authMiddleware, async (req, res) => {
+    const user = req.user
+
+    if(!user) {
+        return res.status(404).json({ message: 'no user... off with your head' });
+    }
+
     const page = parseInt(req.query.page) || 1; // Find current page number. Default to 1.
     const limit = parseInt(req.query.limit) || 4; // Number of items per page. Default to 4.
     const skipIndex = (page - 1) * limit; // Calculates the starting index for your page.

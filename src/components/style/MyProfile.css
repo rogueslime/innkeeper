@@ -1,0 +1,17 @@
+.user-characters {
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    padding:20px;
+    justify-content:center;
+    align-items: start;
+}
+
+h1 {
+    /*color: darkorange;*/
+    font-weight:bolder;
+    background: linear-gradient(to right, #ff7e5f, darkorange);
+    -webkit-background-clip:text;
+    color:transparent;
+    letter-spacing: 1.5px;
+}

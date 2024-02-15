@@ -9,7 +9,7 @@ function CharacterCard({ character, onExpand, onDelete }) { // Add the passed me
     return (
         <>
             <div className = 'character-card'>
-                <h2>{character.name} // {character.lvl}</h2>
+                <h2>{character.name} // {character.level}</h2>
                 <p>Class: {character.class}</p>
                 <p>Race : {character.race}</p>
                 <button onClick={() => onExpand(character)}>Expand</button>
