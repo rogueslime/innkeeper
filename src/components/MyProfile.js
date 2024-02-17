@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import CharacterCard from './CharacterCard';
+import CharacterDetails from './CharacterDetails';
 import './style/MyProfile.css';
 
 function MyProfile() {
@@ -9,6 +10,7 @@ function MyProfile() {
     const [characters, setCharacters] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [characterExpanded, setExpandedCharacter] = useState(null);
 
     const handleDeleteCharacter = () => {
         console.log('nut');
@@ -16,8 +18,12 @@ function MyProfile() {
 
     // Fans out the desired character.
     const handleExpandCharacter = (character) => {
-        console.log('nut');
+        setExpandedCharacter(characterExpanded => character);
     }
+
+    const handleUnexpandCharacter = () => {
+        setExpandedCharacter(null);
+    };
 
     // Fetches characters from database. Database must be online; currently not hooked into server.js
     useEffect(() => {
@@ -42,6 +48,7 @@ function MyProfile() {
         <>
         <p><strong>User ID: </strong>{currentUser.username}</p>
         <h1>Your Inn</h1>
+        <div className = 'character-block'>
         <div className = 'user-characters'>
             {characters.map(character => (
                 <CharacterCard key={character.id} 
@@ -49,6 +56,8 @@ function MyProfile() {
                 onExpand={handleExpandCharacter} // Passing method as onExpand
                 onDelete={handleDeleteCharacter}/> // Passing method as onDelete
             ))}
+        </div>
+        {characterExpanded && <CharacterDetails character = {characterExpanded} onUnexpand = {handleUnexpandCharacter}/>}
         </div>
         </>
     )
