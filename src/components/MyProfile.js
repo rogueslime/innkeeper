@@ -46,20 +46,23 @@ function MyProfile() {
 
     return (
         <>
-        <p><strong>User ID: </strong>{currentUser.username}</p>
+        <div className = 'profile-details'>
+            <p><strong>User ID: </strong>{currentUser.username}</p>
+        </div>
         <h1>Your Inn</h1>
         <div className = 'character-block'>
-        <div className = 'user-characters'>
-            {characters.map(character => (
-                <CharacterCard key={character.id} 
-                character={character} 
-                onExpand={handleExpandCharacter} // Passing method as onExpand
-                onDelete={handleDeleteCharacter}/> // Passing method as onDelete
-            ))}
-        </div>
-        <div className = 'details-block'>
-        <CharacterDetails character = {characterExpanded} onUnexpand = {handleUnexpandCharacter}/>
-        </div>
+            <div className = 'details-block'>
+                <CharacterDetails character = {characterExpanded} onUnexpand = {handleUnexpandCharacter}/>
+            </div>
+            <span></span>
+            <div className = 'user-characters'>
+                {characters.map(character => (
+                    <CharacterCard key={character.id} 
+                    character={character} 
+                    onExpand={handleExpandCharacter} // Passing method as onExpand
+                    onDelete={handleDeleteCharacter}/> // Passing method as onDelete
+                ))}
+            </div>
         </div>
         </>
     )

@@ -1,6 +1,27 @@
+.profile-details {
+    display:flex;
+    background-color:#333;
+    width:60%;
+    justify-content:center;
+    align-items:center;
+    border-radius:8px;
+}
+
+.profile-details p {
+    color: #ccc;
+}
+
+.profile-details strong {
+    font-weight:bolder;
+    background: linear-gradient(to right, #ff7e5f, darkorange);
+    -webkit-background-clip:text;
+    color:transparent;
+    letter-spacing: 1.5px;
+}
+
 .character-block {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .user-characters {
@@ -22,5 +43,5 @@ h1 {
 }
 
 .details-block {
-    max-width:10%;
+    max-width:100%;
 }
