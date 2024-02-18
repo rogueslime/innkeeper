@@ -57,7 +57,9 @@ function MyProfile() {
                 onDelete={handleDeleteCharacter}/> // Passing method as onDelete
             ))}
         </div>
-        {characterExpanded && <CharacterDetails character = {characterExpanded} onUnexpand = {handleUnexpandCharacter}/>}
+        <div className = 'details-block'>
+        <CharacterDetails character = {characterExpanded} onUnexpand = {handleUnexpandCharacter}/>
+        </div>
         </div>
         </>
     )

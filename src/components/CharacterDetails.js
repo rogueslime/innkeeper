@@ -2,6 +2,14 @@ import React from 'react';
 import './style/CharacterDetails.css';
 
 function CharacterDetails({character, onUnexpand}) { // Create method to expand element arrays so this file isn't as long
+    if (!character) {
+        return (
+            <div className='expanded'>
+                <p>Select a character to view details.</p>
+            </div>
+        );
+    }
+    
     return (
         <div className = 'expanded'>
             
