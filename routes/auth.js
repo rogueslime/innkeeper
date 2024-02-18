@@ -23,6 +23,8 @@ router.post('/register', async (req, res) => {
             tokenVerified: false
         })
 
+        console.log(user);
+
         // Save user
         const savedUser = await user.save();
 
