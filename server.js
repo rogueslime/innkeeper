@@ -1,6 +1,7 @@
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
+const dotenv = require ('dotenv');
 
 const characterRoutes = require('./routes/characters');
 const authRoutes = require('./routes/auth');
@@ -9,6 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 4000; // wat dis do
 
 app.use(cors()); // set up to only use my origin eventually
+dotenv.config();
 
 app.use(express.json()) // Middleware for parsing JSON bodies?
 
