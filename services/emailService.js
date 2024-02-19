@@ -20,7 +20,7 @@ const sendEmailVerification = async (userEmail, token) => {
         from: process.env.EMAIL_USERNAME,
         to: userEmail,
         subject: 'Innkeeper Email Verification',
-        html: `<p>Time to verify! Please follow this link to verify your account: <link${verificationUrl}</link></p>`
+        html: `<p>Time to verify! Please follow this link to verify your account: <link>${verificationUrl}</link></p>`
     }
 
     try {

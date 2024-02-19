@@ -25,6 +25,29 @@ function MyProfile() {
         setExpandedCharacter(null);
     };
 
+    // Resend verification email endpoint
+    const resendVerification = () => {
+        const token = localStorage.getItem('token');
+
+        fetch(`http://localhost:4000/api/auth/reverify`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        })
+
+        .then(response => {
+            if(response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Failed to reverify');
+            }
+        })
+        .then(data => console.log(data.message))
+        .catch(error => console.error('Error reverifying ',error))
+    }
+
     // Fetches characters from database. Database must be online; currently not hooked into server.js
     useEffect(() => {
         const token = localStorage.getItem('token'); // getting the token from localStorage
@@ -48,6 +71,7 @@ function MyProfile() {
         <>
         <div className = 'profile-details'>
             <p><strong>User ID: </strong>{currentUser.username}</p>
+            <p><strong>User E-mail:</strong> {currentUser.email} {currentUser.tokenVerified ? (<strong>V</strong>) : (<strong onClick={resendVerification}>NV: Resend</strong>)}</p>
         </div>
         <h1>Your Inn</h1>
         <div className = 'character-block'>
@@ -56,7 +80,7 @@ function MyProfile() {
             </div>
             <span></span>
             <div className = 'user-characters'>
-                {characters.map(character => (
+                {Array.isArray(characters) && characters.length > 0 &&characters.map(character => (
                     <CharacterCard key={character.id} 
                     character={character} 
                     onExpand={handleExpandCharacter} // Passing method as onExpand

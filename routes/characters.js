@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Character = require('../models/characterSchema');
 const User = require('../models/user')
-const authMiddleware = require('../middleware/auth');
+const authMiddleware = require('../middleware/authVerified');
 
 // Endpoint to get a list of characters from ALL characters. Returns 4 characters. Supports pagination.
 router.get('/', async (req, res) => {

@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const { sendEmailVerification } = require('../services/emailService');
+const authMiddleware = require('../middleware/auth');
+const authMiddlewareVerified = require('../middleware/authVerified');
 
 const router = express.Router();
 const crypto = require('crypto');
@@ -51,6 +53,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// Email verification.
 router.get('/verify-email/:token', async (req, res) => {
     try {
         const { token } = req.params;
@@ -68,6 +71,16 @@ router.get('/verify-email/:token', async (req, res) => {
         res.status(200).json({ message: "Email verified!" })
     } catch (error) {
         res.status(500).json({ message: "Server error during email verification.", error: error.message })
+    }
+});
+
+router.post('/reverify', authMiddleware, async(req, res) => {
+    const user = req.user;
+    try {
+        await sendEmailVerification(user.email, user.verificationToken);
+        res.status(201).json({ message: 'reverification email sent.' })
+    } catch (error) {
+        res.status(500).json({ message: "Server error during reverification", error: error.message })
     }
 });
 
