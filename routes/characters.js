@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const Character = require('../models/characterSchema');
 const User = require('../models/user')
-const authMiddleware = require('../middleware/authVerified');
+const authMiddleware = require('../middleware/auth');
+const authMiddlewareVerified = require('../middleware/authVerified');
 
 // Endpoint to get a list of characters from ALL characters. Returns 4 characters. Supports pagination.
 router.get('/', async (req, res) => {
@@ -59,7 +60,7 @@ router.get('/:userid', authMiddleware, async (req, res) => {
 });
 
 // Endpoint to create a new character and append it to the list.
-router.post('/', authMiddleware, async (req, res) => {
+router.post('/', authMiddlewareVerified, async (req, res) => {
     try {
         // Create character using request body
         const newCharacter = new Character(req.body);
