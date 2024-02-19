@@ -5,7 +5,7 @@ import CharacterDetails from './CharacterDetails';
 import './style/MyProfile.css';
 
 function MyProfile() {
-    const {currentUser, updateCurrentUser} = useAuth();
+    const {currentUser, updateCurrentUser } = useAuth();
 
     const [characters, setCharacters] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
@@ -28,6 +28,7 @@ function MyProfile() {
     // Resend verification email endpoint
     const resendVerification = () => {
         const token = localStorage.getItem('token');
+        console.log('token retrieved');
 
         fetch(`http://localhost:4000/api/auth/reverify`, {
             method: 'POST',

@@ -1,7 +1,9 @@
 import React, { useState, useEffect }from 'react';
+import {useAuth} from '../context/AuthContext';
 import { useParams, Navigate } from 'react-router-dom';
 
 function VerifyProfile() {
+    const { logout } = useAuth();
     const { token } = useParams();
     const [verified, setVerified] = useState(false);
     const [loading, setLoading] = useState(true); //loads until process complete
@@ -23,6 +25,7 @@ function VerifyProfile() {
             } catch (error) {
                 console.error('verification error:',error);
             } finally {
+                logout();
                 setLoading(false);
             }
         };

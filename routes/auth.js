@@ -75,7 +75,9 @@ router.get('/verify-email/:token', async (req, res) => {
 });
 
 router.post('/reverify', authMiddleware, async(req, res) => {
+    console.log('beginning reverification');
     const user = req.user;
+    console.log('user grabbed... email: ',user.email,' vToken: ',user.verificationToken);
     try {
         await sendEmailVerification(user.email, user.verificationToken);
         res.status(201).json({ message: 'reverification email sent.' })
