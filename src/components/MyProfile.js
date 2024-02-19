@@ -73,7 +73,7 @@ function MyProfile() {
         <div className = 'profile-details'>
             <p><strong>User ID: </strong>{currentUser.username}</p>
             <p><strong>User E-mail:</strong> {currentUser.email} {currentUser.tokenVerified ? (<strong>V</strong>) : (<strong onClick={resendVerification}>NV: Resend</strong>)}</p>
-            <p><strong>Change Email</strong></p> {/** Need to finish change email route hookup. */}
+            <p><strong className="little">Change Email</strong></p> {/** Need to finish change email route hookup. */}
         </div>
         <h1>Your Inn</h1>
         <div className = 'character-block'>
