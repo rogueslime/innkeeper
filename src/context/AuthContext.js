@@ -9,8 +9,13 @@ export const AuthProvider = ({ children }) => {
     const [authToken, setAuthToken] = useState(localStorage.getItem('token'));
     // Stores the Current User in local storage.
     const [currentUser, setCurrentUser] = useState(() => {
-        const savedUser = localStorage.getItem('user');
-        return savedUser ? JSON.parse(savedUser) : null;
+        try {
+            const savedUser = localStorage.getItem('user');
+            return savedUser ? JSON.parse(savedUser) : null;
+        } catch (error) {
+            console.error('Error parsing user: ',error);
+            return null;
+        }
     })
 
     // A method to update the current user's state if anything changes
@@ -30,8 +35,12 @@ export const AuthProvider = ({ children }) => {
 
     // Logs out a user, removing their local storage tokens and user.
     const logout = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
+        if(localStorage.token) {
+            localStorage.removeItem('token');
+        }
+        if(localStorage.user) {
+            localStorage.removeItem('user');
+        }
         setAuthToken(null);
         setCurrentUser(null);
     }

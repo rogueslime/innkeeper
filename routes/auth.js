@@ -75,19 +75,23 @@ router.get('/verify-email/:token', async (req, res) => {
 });
 
 // Assign new email to account.
-router.post('/change-email', AuthMiddleware, async (req, res) => {
+router.post('/change-email', authMiddleware, async (req, res) => {
     try {
+        console.log('REQ BODY //// ',req.body);
         const { newEmail } = req.body;
         const user = req.user;
+        const emailToken = crypto.randomBytes(20).toString('hex');
 
         user.email = newEmail;
+        user.tokenVerified = false;
+        user.verificationToken = emailToken;
 
         await user.save();
         // Possibly need to save new user to local users cache for email update
-        res.status(200).json({ message: 'Email updated successfully', user });
+        res.status(200).json({ message: 'Email updated successfully', user: user });
     } catch(error) {
         console.error('Error updating email: ',error);
-        res.status(500).json({ message: 'Error updating email,' error });
+        res.status(500).json({ message: 'Error updating email,', error: error.message });
     }
 });
 

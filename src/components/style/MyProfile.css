@@ -20,6 +20,24 @@
     letter-spacing: 1.5px;
 }
 
+/** being overwritten by <p> right now*/
+.little {
+    color:darkorange;
+    font-weight:bolder;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+.little:hover {
+    color: lightsalmon;
+    text-decoration: underline;
+}
+
+.hoverable:hover {
+    color: lightsalmon;
+    text-decoration:underline;
+}
+
 .character-block {
     display: flex;
     flex-direction: column;

@@ -10,6 +10,9 @@ function MyProfile() {
     const [characters, setCharacters] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const [email, setEmail] = useState('');
+
+    const [changingEmail, setChangingEmail] = useState(true);
     const [characterExpanded, setExpandedCharacter] = useState(null);
 
     const handleDeleteCharacter = () => {
@@ -24,6 +27,49 @@ function MyProfile() {
     const handleUnexpandCharacter = () => {
         setExpandedCharacter(null);
     };
+    
+    const handleEmailInput = (e) => {
+        setEmail(email => e.target.value)
+        console.log(email);
+    };
+
+    const handleChangingEmail = () => {
+        setChangingEmail(changingEmail => !changingEmail);
+        console.log(changingEmail)
+    }
+
+    const handleEmailSubmit = (email) => {
+        const token = localStorage.getItem('token');
+        const newEmail = email;
+        console.log('token retrieved');
+
+        fetch('http://localhost:4000/api/auth/change-email', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ newEmail })
+        })
+
+        .then(response => {
+            if(response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Failed to change email.');
+            }
+        })
+        .then(data => {
+            console.log('Data message:',data.message, 'Data user: ',data.user);
+            if(data.user) {
+                updateCurrentUser(currentUser => data.user);
+            }
+        })
+        .catch(error => console.error('Error changing email ',error))
+
+        console.log('finished');
+        setChangingEmail(changingEmail => !changingEmail);
+    }
 
     // Resend verification email endpoint
     const resendVerification = () => {
@@ -66,14 +112,28 @@ function MyProfile() {
                 console.log('Characters on next page fetched.')
             })
             .catch(error => console.error('Error fetching characters: ', error));
-    }, [currentPage]);
+    }, [currentPage], {currentUser});
 
     return (
         <>
         <div className = 'profile-details'>
             <p><strong>User ID: </strong>{currentUser.username}</p>
-            <p><strong>User E-mail:</strong> {currentUser.email} {currentUser.tokenVerified ? (<strong>V</strong>) : (<strong onClick={resendVerification}>NV: Resend</strong>)}</p>
-            <p><strong className="little">Change Email</strong></p> {/** Need to finish change email route hookup. */}
+            {changingEmail? (
+                <p><strong>User E-mail:</strong> {currentUser.email} {currentUser.tokenVerified ? (<strong>V</strong>) : (<strong className="hoverable" onClick={resendVerification}>NV: Resend</strong>)}</p>
+            ) : (
+                <>
+                    <input
+                        type="text"
+                        name="class"
+                        id="class"
+                        value={email}
+                        onChange={handleEmailInput}
+                        placeholder="Class"
+                        required
+                    /><button onClick={() => handleEmailSubmit(email)}>Submit</button>
+                </>
+            )}
+            <p className="little" onClick = {() => handleChangingEmail()}>Change Email</p> {/** Need to finish change email route hookup. */}
         </div>
         <h1>Your Inn</h1>
         <div className = 'character-block'>
