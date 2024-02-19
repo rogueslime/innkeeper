@@ -74,6 +74,24 @@ router.get('/verify-email/:token', async (req, res) => {
     }
 });
 
+// Assign new email to account.
+router.post('/change-email', AuthMiddleware, async (req, res) => {
+    try {
+        const { newEmail } = req.body;
+        const user = req.user;
+
+        user.email = newEmail;
+
+        await user.save();
+        // Possibly need to save new user to local users cache for email update
+        res.status(200).json({ message: 'Email updated successfully', user });
+    } catch(error) {
+        console.error('Error updating email: ',error);
+        res.status(500).json({ message: 'Error updating email,' error });
+    }
+});
+
+// Resend verification token to email.
 router.post('/reverify', authMiddleware, async(req, res) => {
     console.log('beginning reverification');
     const user = req.user;
