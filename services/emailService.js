@@ -13,14 +13,14 @@ const sendEmailVerification = async (userEmail, token) => {
         },
     });
 
-    const verificationUrl = `its working! ${token}`;
+    const verificationUrl = `http://localhost:3000/auth/verify-email/${token}`;
     console.log('Sending email via service to ',userEmail,' with token ',token);
 
     const mailOptions = {
         from: process.env.EMAIL_USERNAME,
         to: userEmail,
         subject: 'Innkeeper Email Verification',
-        html: `Time to verify! ${verificationUrl}`
+        html: `<p>Time to verify! Please follow this link to verify your account: <link${verificationUrl}</link></p>`
     }
 
     try {

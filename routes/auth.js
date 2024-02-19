@@ -51,4 +51,24 @@ router.post('/login', async (req, res) => {
     }
 });
 
+router.get('/verify-email/:token', async (req, res) => {
+    try {
+        const { token } = req.params;
+        console.log('TOKEN!!!',token);
+        const user = await User.findOne({ verificationToken: token });
+
+        if(!user) {
+            return res.status(404).json({ message: "No user with token found. Ignore if redirected." });
+        }
+
+        user.tokenVerified = true;
+        user.verificationToken = '';
+        await user.save();
+
+        res.status(200).json({ message: "Email verified!" })
+    } catch (error) {
+        res.status(500).json({ message: "Server error during email verification.", error: error.message })
+    }
+});
+
 module.exports = router;

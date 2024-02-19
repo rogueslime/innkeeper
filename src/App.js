@@ -9,6 +9,7 @@ import HomePage from './components/HomePage';
 import Register from './components/Registration';
 import Login from './components/Login';
 import MyProfile from './components/MyProfile';
+import VerifyProfile from './components/VerifyProfile';
 
 import './components/style/App.css';
 import logo from './images/Innkeeper-logo.png';
@@ -55,6 +56,7 @@ function App() {
                         <Route path="/register" element={<Register />} />
                         <Route path="/login" element={<Login />} />
                         <Route path="/my-profile" element={<MyProfile />} />
+                        <Route path="/verify-email/:token" element={<VerifyProfile />}/>
                     </Routes>
                 </div>
             </div>
