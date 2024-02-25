@@ -1,0 +1,36 @@
+.programmer-details {
+    display: flex;
+    flex-direction:row;
+    max-width:37%;
+    background-color:#333;
+    border: 1px solid #222;
+    border-radius:8px;
+    align-items:center;
+    justify-content:center;
+}
+
+.textBlock {
+    margin-right: 5%;
+}
+
+.textBlock h2 {
+    /*color: darkorange;*/
+    font-weight:bolder;
+    background: linear-gradient(to right, #ff7e5f, darkorange);
+    -webkit-background-clip:text;
+    color:transparent;
+    letter-spacing: 1.5px;
+}
+
+.textBlock p {
+    color: #ccc;
+}
+
+.tray-image {
+    display:flex;
+    max-width:22%;
+    max-height:auto;
+    padding:3%;
+    margin-left:5%;
+    padding-left:0;
+}

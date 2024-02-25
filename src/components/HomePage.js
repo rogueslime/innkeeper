@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './style/HomePage.css';
 import catLogo from '../images/innkeeperMage.png';
+import ProgrammerInfo from './ProgrammerInfo';
 
 function HomePage() {
     return (
+        <>
         <div className="home-content">
 
             <div className='intro-text'>
@@ -13,6 +15,9 @@ function HomePage() {
             <img className="home-logo" src={catLogo} alt="Cat Logo"/>
             
         </div>
+        <span className='dividerSpan'/>
+        <ProgrammerInfo/>
+        </>
     );
 }
 export default HomePage;
